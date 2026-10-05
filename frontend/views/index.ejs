@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Ares</title>
+    <title>Student Form</title>
 </head>
 <body>
-    <h1>WELCOME TO FRONTEND</h1>
-    <h2>ARES</h2>
 
-    <ul>
-        <% data.forEach(function(name) { %>
-            <li><%= name %></li>
-        <% }); %>
-    </ul>
+    <h1>Student Submission Form</h1>
+
+    <form>
+        <label>Name:</label>
+        <input type="text" name="name" required>
+        <br><br>
+
+        <label>Email:</label>
+        <input type="email" name="email" required>
+        <br><br>
+
+        <label>Course:</label>
+        <input type="text" name="course" required>
+        <br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
 </body>
-<style>
-    body{
-        background: #000;
-        color: yellowgreen;
-    }
-</style>
 </html>

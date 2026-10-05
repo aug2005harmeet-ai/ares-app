@@ -1,25 +1,29 @@
 from flask import Flask, request, jsonify
-from business import get_data
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
-@app.route('/')
+@app.route("/")
+def home():
+    return "Flask backend is running"
 
-def hello_world():
-    
-    return 'Hello World!'
 
-@app.route('/api', methods=['GET'])
-def api():
-    
-    data = get_data()
-    
-    data = {
-        'data': data
-    }
+@app.route("/submit", methods=["POST"])
+def submit():
+    data = request.get_json()
 
-    return jsonify(data)
+    name = data.get("name", "")
+    email = data.get("email", "")
+    course = data.get("course", "")
 
-if __name__ == '__main__':
+    return jsonify({
+        "message": "Form submitted successfully",
+        "name": name,
+        "email": email,
+        "course": course
+    })
 
-    app.run(port=8000,host='0.0.0.0', debug=True)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
